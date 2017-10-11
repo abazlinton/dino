@@ -3,24 +3,23 @@ var Dinosaur = require('../dinosaur');
 
 var dinosaur;
 
-beforeEach(() => {
+beforeEach(function () {
   dinosaur = new Dinosaur("T-Rex", 2);
 });
 
-describe('Dinosaur', () => {
-  it('has a type', () => {
+describe('Dinosaur', function () {
+  it('has a type', function () {
     assert.strictEqual(dinosaur.type, "T-Rex");
   });
 
-  it('has a no of offspring per year', () => {
+  it('has a no of offspring per year', function () {
     assert.strictEqual(dinosaur.annualOffspring, 2);
   });
 
-  it('can make babies', () => {
-    var baby = dinosaur.makeBaby();
-    assert.strictEqual(baby instanceof Dinosaur, true);
-    assert.strictEqual(baby.annualOffspring, 2);
-    assert.strictEqual(baby.type, "T-Rex");
+  it('can make babies', function () {
+    var expectedBabies = [dinosaur, dinosaur];
+    var actualBabies = dinosaur.giveBirth();
+    assert.deepStrictEqual(actualBabies, expectedBabies);
   });
-  
+
 });

@@ -26,21 +26,16 @@ Park.prototype.dinosaursWithOffSpringMoreThan = function (amount) {
 }
 
 Park.prototype.breedDinosaurs = function () {
-  var babies = [];
+  var allOffspring = [];
   for (var dinosaur of this.enclosure) {
-    for (var offspring = 0; offspring < dinosaur.annualOffspring; offspring++){
-      var baby = dinosaur.makeBaby();
-      babies.push(baby);
-    }
+    allOffspring = allOffspring.concat(dinosaur.giveBirth());
   }
-  for (var baby of babies){
-    this.addDinosaur(baby);
-  }
+  this.enclosure = this.enclosure.concat(allOffspring);
 }
 
 Park.prototype.advanceTime = function (years) {
-  for (var year = 0; year < years ; year++) {
-      this.breedDinosaurs();
+  for (var year = 0; year < years; year++) {
+    this.breedDinosaurs();
   }
 }
 
