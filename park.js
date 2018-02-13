@@ -28,7 +28,7 @@ Park.prototype.dinosaursWithOffSpringMoreThan = function (amount) {
 Park.prototype.calculateDinosaurs = function (years) {
   let total = 0;
   for (const dinosaur of this.enclosure) {
-    var count = 1;
+    let count = 1;
     for (let i = 0; i < years; i++) {
       count += dinosaur.annualOffspring * count;
     }
