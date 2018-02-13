@@ -1,16 +1,15 @@
-var assert = require('assert');
-var Park = require('../park');
-var Dinosaur = require('../dinosaur');
+const assert = require('assert');
+const Park = require('../park');
+const Dinosaur = require('../dinosaur');
 
 describe('Park', function() {
   
-    var park;
-    var dilophosaurus;
-    var velociraptor1;
-    var velociraptor2;
-    var velociraptor3;
-    var velociraptor4;
-    
+    let park;
+    let dilophosaurus;
+    let velociraptor1;
+    let velociraptor2;
+    let velociraptor3;
+    let velociraptor4;
   
     beforeEach(function() {
       park = new Park();
@@ -33,20 +32,19 @@ describe('Park', function() {
   
     it('should be able to remove all dinosaurs of a particular type and return modified enclosure', function(){
       park.addDinosaur(tyrannosaurus);
-      park.addDinosaur(dilophosaurus);
       park.addDinosaur(velociraptor1);
       park.addDinosaur(velociraptor2);
-      park.addDinosaur(velociraptor3);
-      park.addDinosaur(velociraptor4);
+      const expected = [tyrannosaurus];
       park.removeDinosaurByType("velociraptor");
-      assert.strictEqual(park.enclosure.length, 2);
+      assert.deepEqual(park.enclosure, expected);
     });
   
     it('should get all the dinosaurs with an average offspring count of more than 2', function(){
       park.addDinosaur(tyrannosaurus);
       park.addDinosaur(dilophosaurus);
       park.addDinosaur(velociraptor1);
-      assert.strictEqual(park.dinosaursWithOffSpringMoreThan(2).length, 2);
+      const expected = [tyrannosaurus, velociraptor1];
+      assert.deepEqual(park.dinosaursWithOffSpringMoreThan(2), expected);
     });
   
     it('should be able to calculate number of dinosaurs after 1 years starting with 1 dinosaur', function(){
