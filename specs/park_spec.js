@@ -47,23 +47,21 @@ describe('Park', function() {
       assert.deepEqual(park.dinosaursWithOffSpringMoreThan(2), expected);
     });
   
-    it('should be able to calculate number of dinosaurs after 1 years starting with 1 dinosaur', function(){
+    it('should be able to calculate number of dinosaurs after 1 year starting with 1 dinosaur', function(){
       park.addDinosaur(tyrannosaurus);
-      park.advanceTime(1)
-      assert.strictEqual(park.enclosure.length, 4);
+      assert.strictEqual(park.calculateDinosaurs(1), 4);
     });
   
     it('should be able to calculate number of dinosaurs after 2 years starting with 1 dinosaur', function(){
       park.addDinosaur(tyrannosaurus);
-      park.advanceTime(2)
-      assert.strictEqual(park.enclosure.length, 16);
+      assert.strictEqual(park.calculateDinosaurs(2), 16);
     });
   
-    it('should be able to caluculate number of dinosaur after year two starting with 2 dinosaurs', function(){
+    it('should be able to calculate number of dinosaur after year two starting with 2 dinosaurs', function(){
       park.addDinosaur(tyrannosaurus);
       park.addDinosaur(dilophosaurus);
-      park.advanceTime(2)
-      assert.strictEqual(park.enclosure.length, 25);
+      assert.strictEqual(park.calculateDinosaurs(2), 25);
     });
+
   
   });
