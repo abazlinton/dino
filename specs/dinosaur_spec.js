@@ -1,13 +1,15 @@
-var assert = require('assert');
-var Dinosaur = require('../dinosaur');
+const assert = require('assert');
+const Dinosaur = require('../dinosaur');
 
-var dinosaur;
-
-beforeEach(function () {
-  dinosaur = new Dinosaur("T-Rex", 2);
-});
 
 describe('Dinosaur', function () {
+
+  let dinosaur;
+
+  beforeEach(function () {
+    dinosaur = new Dinosaur("T-Rex", 2);
+  });
+
   it('has a type', function () {
     assert.strictEqual(dinosaur.type, "T-Rex");
   });
@@ -17,8 +19,8 @@ describe('Dinosaur', function () {
   });
 
   it('can make babies', function () {
-    var expectedBabies = [dinosaur, dinosaur];
-    var actualBabies = dinosaur.giveBirth();
+    const expectedBabies = [dinosaur, dinosaur];
+    const actualBabies = dinosaur.giveBirth();
     assert.deepStrictEqual(actualBabies, expectedBabies);
   });
 
